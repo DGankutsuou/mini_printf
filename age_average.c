@@ -9,6 +9,7 @@ int	age_averge(int	number, ...) // number i the fixed parameter
 
 	va_start (ap, number); // scape the number
 	total = 0;
+	iterator = 0;
 	while (iterator < number)
 	{
 		total += va_arg(ap, int);
