@@ -36,7 +36,8 @@ int	mini_printf(const char *format, ...)
 		if (*format == '%')
 			ret += format_printer(*(++format), ap);
 		else
-			ret += write (1, format++, 1);
+			ret += write (1, format, 1);
+		format++;
 	}
 	va_end (ap);
 	return (ret);

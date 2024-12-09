@@ -22,7 +22,7 @@ int	ft_putchar(char c)
 	return ((int)write(1, &c, 1));
 }
 
-void	ft_putnbr(int n)
+void	ft_putnbr(int n, char *base, int base_len)
 {
 	if (n == -2147483648)
 	{
@@ -35,6 +35,21 @@ void	ft_putnbr(int n)
 		n *= -1;
 	}
 	if (n > 9)
-		ft_putnbr(n / 10);
-	ft_putchar(n % 10 + 48);
+		ft_putnbr(n / base_len, base, base_len);
+	ft_putchar(base[n % base_len]);
+}
+
+int	ft_putstr(char *s)
+{
+	int	ret;
+
+	ret = 0;
+	if (!s)
+		return ;
+	while (s[ret])
+	{
+		ft_putchar(s[ret]);
+		ret++;
+	}
+	return (ret);
 }
