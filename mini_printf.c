@@ -8,7 +8,10 @@ int	format_printer(const char *format, va_list ap)
 	if (*format == 'c')
 		ret = ft_putchar(va_arg(ap, int));
 	else if (*format == 'd')
-		ret = ft_putnbr(va_arg(ap, int));
+	{
+		ft_putnbr(va_arg(ap, int));
+		ret = number_len(va_arg(ap, int));
+	}
 	else if (*format == 's')
 		ret = ft_putstr(va_arg(ap, char *));
 	else if (*format == 'x')
