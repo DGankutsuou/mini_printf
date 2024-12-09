@@ -8,14 +8,11 @@ int	format_printer(char format, va_list ap)
 	if (format == 'c')
 		ret = ft_putchar(va_arg(ap, int));
 	else if (format == 'd')
-	{
-		ft_putnbr_base(va_arg(ap, int), "0123456789", 10);
-		//ret = number_len(va_arg(ap, int));
-	}
+		ret = ft_putnbr_base(va_arg(ap, int), 10, "0123456789");
 	else if (format == 's')
 		ret = ft_putstr(va_arg(ap, char *));
 	else if (format == 'x')
-		ft_putnbr_base(va_arg(ap, int), "0123456789abcdef", 16);
+		ret = ft_putnbr_base(va_arg(ap, int), 16, "0123456789abcdef");
 	else
 	{
 		ret = write (1, "%", 1);

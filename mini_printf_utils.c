@@ -22,21 +22,19 @@ int	ft_putchar(char c)
 	return ((int)write(1, &c, 1));
 }
 
-void	ft_putnbr_base(int n, char *base, int base_len)
+int	ft_putnbr_base(int n, char base_len, char *base)
 {
-	if (n == -2147483648)
-	{
-		ft_putstr("-2147483648");
-		return ;
-	}
+	int	ret;
+
 	if (n < 0)
+		return (ft_putchar('-') + ft_putnbr_base(-n, base_len, base));
+	if (n < base_len)
+		return (ft_putchar(base[n]));
+	else
 	{
-		ft_putchar('-');
-		n *= -1;
+		ret = ft_putnbr_base(n / base_len, base_len, base);
+		return (ret + ft_putnbr_base(n % base_len, base_len, base));
 	}
-	if (n > 9)
-		ft_putnbr_base(n / base_len, base, base_len);
-	ft_putchar(base[n % base_len]);
 }
 
 int	ft_putstr(char *s)
